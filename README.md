@@ -10,7 +10,7 @@ It includes:
 - Machine walkthroughs implemented through SysReptor findings
 - Severity table support for machine walkthrough fields
 
-## Usage
+### Usage
 
 - Download the archive from [Releases](https://github.com/0xJavlonbeck/CRTM-Report-Template/releases)
 - In SysReptor, open `Designs`
@@ -18,4 +18,4 @@ It includes:
 - Choose this design when creating a new project
 - Write machine walkthroughs in `Findings`
 
-Preview PDF included in the repository
+| Preview PDF included in the repository
