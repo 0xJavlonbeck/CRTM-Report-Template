@@ -1,0 +1,504 @@
+{
+  "id": "a9eba789-e329-445d-8b46-3742e8948e02",
+  "created": "2026-08-16T14:32:06.893246Z",
+  "updated": "2026-08-16T14:32:06.893246Z",
+  "name": "CRTM Report Template",
+  "language": "en-US",
+  "status": "finished",
+  "tags": [
+    "Active Directory"
+  ],
+  "report_sections": [
+    {
+      "id": "user_information",
+      "label": "User Information",
+      "fields": [
+        {
+          "id": "title",
+          "type": "string",
+          "label": "Report Title",
+          "origin": "core",
+          "default": "Certified Red Team Master",
+          "pattern": null,
+          "required": true,
+          "help_text": null,
+          "spellcheck": false
+        },
+        {
+          "id": "name_surname",
+          "type": "string",
+          "label": "Name Surname",
+          "origin": "custom",
+          "default": "TODO",
+          "pattern": null,
+          "required": true,
+          "help_text": null,
+          "spellcheck": false
+        },
+        {
+          "id": "email",
+          "type": "string",
+          "label": "Email",
+          "origin": "custom",
+          "default": "TODO",
+          "pattern": null,
+          "required": true,
+          "help_text": null,
+          "spellcheck": false
+        },
+        {
+          "id": "report_date",
+          "type": "date",
+          "label": "Report Date",
+          "origin": "custom",
+          "default": null,
+          "required": true,
+          "help_text": null
+        },
+        {
+          "id": "report_version",
+          "type": "string",
+          "label": "Report Version",
+          "origin": "custom",
+          "default": "1.0",
+          "pattern": null,
+          "required": true,
+          "help_text": null,
+          "spellcheck": false
+        }
+      ]
+    },
+    {
+      "id": "executive_summary",
+      "label": "Certified Red Team Master Exam Report",
+      "fields": [
+        {
+          "id": "executive_summary",
+          "type": "markdown",
+          "label": "Introduction",
+          "origin": "custom",
+          "default": "The Certified Red Team Master exam report documents the work performed during the assessment of the internal GCB network. The report describes the attack, defense, and cleanup activities in sufficient detail for the reviewer to understand the approach taken, the evidence collected, the decisions made during the assessment, and the final state of the environment. It includes the targeted systems, the techniques used to obtain command execution, the defensive fixes applied after compromise, and the cleanup actions performed because the exam environment does not provide an automatic revert mechanism.",
+          "required": true,
+          "help_text": null
+        },
+        {
+          "id": "objective",
+          "type": "markdown",
+          "label": "Objective",
+          "origin": "custom",
+          "default": "The Global Central Bank assessment was scheduled for 07 August 2026 at 03:00 PM. The assessment was performed within a 48-hour access window and included five in-scope servers distributed across two Active Directory forests. The servers had different configurations, trust relationships, applications, and access requirements that had to be considered during both the attack and defense phases.\n\n| Area | Requirement |\n|:---|:---|\n| Lab duration | 48 hours |\n| Environment | 5 in-scope servers across 2 forests with different configurations and applications |\n| Out of scope | The `TEST` machine is a rescue machine and is out of scope |\n| Revert | There is no automatic revert, so all changes must be handled carefully |\n| Attack objective | Obtain OS command execution on all in-scope boxes, not necessarily with administrative privileges |\n| Defense objective | Fix the compromised environment while keeping the required access paths working |\n\nProvided access:\n\n| Username | Machine Name | IP Address |\n|:---|:---|:---|\n| USERNAME | EXAM | 192.168.1.1 |\n\nTarget Systems:\n\n| System | Domain | IP Address |\n| :--- | :--- | :--- |\n| MACHINE1 | DOMAIN.LOCAL | 192.168.1.2 |\n| MACHINE2 | DOMAIN.LOCAL | 192.168.1.3 |\n| MACHINE3 | DOMAIN.LOCAL | 192.168.1.4 |\n| MACHINE4 | DOMAIN.LOCAL | 192.168.1.5 |\n| MACHINE5 | DOMAIN.LOCAL | 192.168.1.6 |\n\nPost-remediation validation criteria:\n\n| Validation Item | Expected Result |\n|:---|:---|\n| Validation item 1 | Required access remains functional |\n| Validation item 2 | Required access remains functional |\n| Validation item 3 | Only the required limited privileges remain available |\n\nThe report contains a detailed walkthrough for each compromised server, including screenshots, tools used, relevant tool output, and an explanation of each important command or action performed during the assessment.",
+          "required": true,
+          "help_text": null
+        },
+        {
+          "id": "requirements",
+          "type": "markdown",
+          "label": "Requirements",
+          "origin": "custom",
+          "default": "The Global Central Bank assessment required OS command execution on all in-scope servers, while administrative privileges were not mandatory unless needed to reach the objective. After the compromise phase, the environment had to be remediated without breaking the required access paths between trusted systems and accounts.\n\nThe report must include a high-level summary, methodology walkthrough, detailed server-specific walkthroughs, supporting screenshots, tools used, relevant command output, defense actions, cleanup actions, and verification of the final environment state. Firewall rules and route changes were not considered valid primary remediation methods.",
+          "required": true,
+          "help_text": null
+        }
+      ]
+    },
+    {
+      "id": "high_level_summary",
+      "label": "High-Level Summary",
+      "fields": [
+        {
+          "id": "attack_summary",
+          "type": "markdown",
+          "label": "Attack Summary",
+          "origin": "custom",
+          "default": "TODO",
+          "required": true,
+          "help_text": null
+        },
+        {
+          "id": "defense_summary",
+          "type": "markdown",
+          "label": "Defense Summary",
+          "origin": "custom",
+          "default": "TODO",
+          "required": true,
+          "help_text": null
+        },
+        {
+          "id": "residual_recommendations",
+          "type": "markdown",
+          "label": "Recommendations",
+          "origin": "custom",
+          "default": "TODO",
+          "required": true,
+          "help_text": null
+        }
+      ]
+    },
+    {
+      "id": "methodology",
+      "label": "Methodologies",
+      "fields": [
+        {
+          "id": "information_gathering",
+          "type": "markdown",
+          "label": "Information Gathering & Enumeration",
+          "origin": "custom",
+          "default": "The information gathering and enumeration phase focused on defining the assessment scope and understanding the structure of the Global Central Bank environment. This included identifying the in-scope servers, mapped forests and domains, exposed services, accessible shares, users, groups, trust relationships, delegated permissions, and other potential access paths.\n\nThe collected information was used to determine how the five in-scope servers were connected, which accounts and services could be used during the attack phase, and which access paths had to remain functional after remediation. This phase also provided the basis for planning the defense and cleanup activities, since each identified misconfiguration or access path had to be reviewed for both exploitation impact and remediation requirements.",
+          "required": true,
+          "help_text": null
+        },
+        {
+          "id": "attack_methodology",
+          "type": "markdown",
+          "label": "Attack Phase",
+          "origin": "custom",
+          "default": "The Attack Phase focused on validating identified misconfigurations and obtaining OS command execution on all five in-scope servers. This section provides a high-level summary of the attack approach, while the detailed host-by-host steps are documented in the Machine Walkthroughs section.\n\nDuring this phase, the collected enumeration data was used to identify viable access paths, test delegated permissions, abuse misconfigured services or trust relationships where applicable, and confirm command execution on each target system. The section should reference the tools used, important outputs, and the purpose of each major command or action performed during the assessment.",
+          "required": true,
+          "help_text": null
+        },
+        {
+          "id": "defense_methodology",
+          "type": "markdown",
+          "label": "Defense Phase",
+          "origin": "custom",
+          "default": "The Defense Phase focused on remediating the compromised environment while preserving the required access paths. This section describes each defensive change, why the selected control was applied, and how it reduced the risk of privilege escalation, lateral movement, or unauthorized access.\n\nAfter each remediation action, the required access paths were validated to confirm that legitimate functionality remained available. Firewall and route changes were not used as the primary remediation method, because the fixes were focused on correcting the underlying permissions, configurations, and access controls that enabled compromise.",
+          "required": true,
+          "help_text": null
+        },
+        {
+          "id": "house_cleaning_methodology",
+          "type": "markdown",
+          "label": "House Cleaning",
+          "origin": "custom",
+          "default": "The house cleaning phase focused on reviewing and removing assessment artifacts from the environment after the attack and defense activities were completed. This included checking created files, temporary tools, accounts, permissions, services, scheduled tasks, active sessions, Kerberos tickets, and configuration changes introduced during the assessment.\n\nEach artifact or change was either removed, reverted to its original state, or documented with justification when it had to remain in place. Final validation was performed to confirm that the required access paths still worked, the remediation actions remained effective, and no unnecessary assessment artifacts were left behind.",
+          "required": true,
+          "help_text": null
+        }
+      ]
+    },
+    {
+      "id": "defense",
+      "label": "Defense",
+      "fields": [
+        {
+          "id": "defense_overview",
+          "type": "markdown",
+          "label": "Defense Overview",
+          "origin": "custom",
+          "default": "TODO\nSummarize the defensive part.",
+          "required": true,
+          "help_text": null
+        },
+        {
+          "id": "defense_fixes",
+          "type": "list",
+          "items": {
+            "id": "",
+            "type": "object",
+            "label": "",
+            "origin": "custom",
+            "help_text": null,
+            "properties": [
+              {
+                "id": "title",
+                "type": "string",
+                "label": "Fix Title",
+                "origin": "custom",
+                "default": "Fix Title - TODO",
+                "pattern": null,
+                "required": true,
+                "help_text": null,
+                "spellcheck": false
+              },
+              {
+                "id": "content",
+                "type": "markdown",
+                "label": "Content",
+                "origin": "custom",
+                "default": "TODO",
+                "required": true,
+                "help_text": null
+              }
+            ]
+          },
+          "label": "Defense Fixes",
+          "origin": "custom",
+          "default": [
+            {
+              "title": "Fix Title - TODO",
+              "content": "TODO"
+            }
+          ],
+          "required": true,
+          "help_text": null
+        }
+      ]
+    },
+    {
+      "id": "cleanup",
+      "label": "Cleanup and Restoration",
+      "fields": [
+        {
+          "id": "cleanup_overview",
+          "type": "markdown",
+          "label": "Cleanup Overview",
+          "origin": "custom",
+          "default": "TODO\nSummarize all cleanup performed after the assessment.",
+          "required": true,
+          "help_text": null
+        },
+        {
+          "id": "cleanup_items",
+          "type": "list",
+          "items": {
+            "id": "",
+            "type": "object",
+            "label": "",
+            "origin": "custom",
+            "help_text": null,
+            "properties": [
+              {
+                "id": "title",
+                "type": "string",
+                "label": "Cleanup Title",
+                "origin": "custom",
+                "default": "Cleanup Title - TODO",
+                "pattern": null,
+                "required": true,
+                "help_text": null,
+                "spellcheck": false
+              },
+              {
+                "id": "content",
+                "type": "markdown",
+                "label": "Content",
+                "origin": "custom",
+                "default": "TODO",
+                "required": true,
+                "help_text": null
+              }
+            ]
+          },
+          "label": "Cleanup Items",
+          "origin": "custom",
+          "default": [
+            {
+              "title": "Cleanup Title - TODO",
+              "content": "TODO"
+            }
+          ],
+          "required": true,
+          "help_text": null
+        }
+      ]
+    },
+    {
+      "id": "appendix",
+      "label": "Appendix",
+      "fields": [
+        {
+          "id": "appendix_sections",
+          "type": "list",
+          "items": {
+            "id": "",
+            "type": "object",
+            "label": "",
+            "origin": "custom",
+            "help_text": null,
+            "properties": [
+              {
+                "id": "content",
+                "type": "markdown",
+                "label": "Content",
+                "origin": "custom",
+                "default": "TODO appendix content",
+                "required": false,
+                "help_text": null
+              },
+              {
+                "id": "title",
+                "type": "string",
+                "label": "Title",
+                "origin": "custom",
+                "default": "TODO appendix title",
+                "pattern": null,
+                "required": false,
+                "help_text": null,
+                "spellcheck": false
+              }
+            ]
+          },
+          "label": "Appendix",
+          "origin": "custom",
+          "default": null,
+          "required": false,
+          "help_text": null
+        }
+      ]
+    }
+  ],
+  "finding_fields": [
+    {
+      "id": "title",
+      "type": "string",
+      "label": "Title",
+      "origin": "core",
+      "default": "Machine Name - TODO",
+      "pattern": null,
+      "required": true,
+      "help_text": null,
+      "spellcheck": false
+    },
+    {
+      "id": "target_type",
+      "type": "string",
+      "label": "Type",
+      "origin": "custom",
+      "default": "Machine Walkthroughs",
+      "pattern": "^Machine Walkthroughs$",
+      "required": true,
+      "help_text": null,
+      "spellcheck": false
+    },
+    {
+      "id": "subsections",
+      "type": "list",
+      "items": {
+        "id": "",
+        "type": "object",
+        "label": "",
+        "origin": "custom",
+        "help_text": null,
+        "properties": [
+          {
+            "id": "title",
+            "type": "string",
+            "label": "Name",
+            "origin": "custom",
+            "default": "Title - TODO",
+            "pattern": null,
+            "required": true,
+            "help_text": null,
+            "spellcheck": false
+          },
+          {
+            "id": "severity",
+            "type": "enum",
+            "label": "Severity",
+            "origin": "custom",
+            "default": "none",
+            "choices": [
+              {
+                "value": "none",
+                "label": "---"
+              },
+              {
+                "value": "info",
+                "label": "Info"
+              },
+              {
+                "value": "low",
+                "label": "Low"
+              },
+              {
+                "value": "medium",
+                "label": "Medium"
+              },
+              {
+                "value": "high",
+                "label": "High"
+              },
+              {
+                "value": "critical",
+                "label": "Critical"
+              }
+            ],
+            "required": false,
+            "help_text": null
+          },
+          {
+            "id": "content",
+            "type": "markdown",
+            "label": "Content",
+            "origin": "custom",
+            "default": "Title Name - TODO",
+            "required": false,
+            "help_text": null
+          }
+        ]
+      },
+      "label": "Fields",
+      "origin": "custom",
+      "default": [
+        {
+          "title": "Title - TODO",
+          "severity": "none",
+          "content": "Title Name - TODO"
+        }
+      ],
+      "required": false,
+      "help_text": null
+    }
+  ],
+  "finding_ordering": [],
+  "finding_grouping": [
+    {
+      "field": "target_type",
+      "order": "asc"
+    }
+  ],
+  "default_notes": [],
+  "report_template": "<div data-sysreptor-generated=\"page-header\" id=\"header\">\n    <div id=\"header-right\">\n        <img src=\"/assets/name/logo.png\" alt=\"logo\" />\n    </div>\n</div>\n\n<div data-sysreptor-generated=\"page-footer\" id=\"footer\">\n    <div id=\"footer-left\"><em>CONFIDENTIAL</em></div>\n    <div id=\"footer-center\">Certified Red Team Master</div>\n</div>\n\n\n<section id=\"page-cover\">\n    <div>\n        <img src=\"/assets/name/cover.png\"\n        alt=\"logo\" />\n    </div>\n    <div class=\"page-cover-title\">\n        <h1>Certified Red Team<br>Master</h1>\n        <h2>Exam Report</h2>\n    </div>\n\n    <div class=\"page-cover-imprint2\">\n        <p>{{ report.email }}</p>\n        <p>{{ formatDate(report.report_date, 'medium') }}</p>\n        <p>v{{ report.report_version }}</p>\n    </div>\n\n</section>\n<pagebreak />\n\n<table-of-contents id=\"toc\" v-slot=\"{ items: tocItems }\">\n    <h1>Table of Contents</h1>\n    <ol>\n        <li v-for=\"item in tocItems\" :class=\"'toc-level' + item.level\">\n            <ref :to=\"item.id\" />\n        </li>\n    </ol>\n    <pagebreak />\n</table-of-contents>\n\n<section>\n    <h1 id=\"exam-report\" class=\"in-toc numbered\">Certified Red Team Master Exam Report</h1>\n\n    <div>\n        <h2 id=\"introduction\" class=\"in-toc numbered\">Introduction</h2>\n        <markdown :text=\"report.executive_summary\" />\n    </div>\n\n    <div>\n        <h2 id=\"objective\" class=\"in-toc numbered\">Objective</h2>\n        <markdown :text=\"report.objective.replace('The Global Central Bank assessment was scheduled for 07 August 2026 at 03:00 PM.', (report.name_surname || 'The student') + ' performed the Global Central Bank assessment, which was scheduled for 07 August 2026 at 03:00 PM.')\" />\n    </div>\n\n    <div>\n        <h2 id=\"requirements\" class=\"in-toc numbered\">Requirements</h2>\n        <markdown :text=\"report.requirements\" />\n    </div>\n</section>\n<pagebreak />\n\n<section>\n    <h1 id=\"high-level-summary\" class=\"in-toc numbered\">High-Level Summary</h1>\n\n    <div>\n        <h2 id=\"attack-summary\" class=\"in-toc numbered\">Attack Summary</h2>\n        <markdown :text=\"report.attack_summary\" />\n    </div>\n\n    <div>\n        <h2 id=\"defense-summary\" class=\"in-toc numbered\">Defense Summary</h2>\n        <markdown :text=\"report.defense_summary\" />\n    </div>\n\n    <div>\n        <h2 id=\"recommendations\" class=\"in-toc numbered\">Recommendations</h2>\n        <markdown :text=\"report.residual_recommendations\" />\n    </div>\n</section>\n<pagebreak />\n\n\n<section>\n    <h1 id=\"methodologies\" class=\"in-toc numbered\">Methodologies</h1>\n    <div>\n        <h2 class=\"in-toc numbered\">Information Gathering &amp; Enumeration</h2>\n        <markdown :text=\"report.information_gathering\" />\n    </div>\n\n    <div>\n        <h2 class=\"in-toc numbered\">Attack Phase</h2>\n        <markdown :text=\"report.attack_methodology\" />\n    </div>\n\n    <div>\n        <h2 class=\"in-toc numbered\">Defense Phase</h2>\n        <markdown :text=\"report.defense_methodology\" />\n    </div>\n\n    <div>\n        <h2 class=\"in-toc numbered\">House Cleaning</h2>\n        <markdown :text=\"report.house_cleaning_methodology\" />\n    </div>\n\n    <pagebreak />\n</section>\n\n<section class=\"machine-walkthroughs\" v-if=\"findings.length > 0\">\n    <h1 id=\"machine-walkthroughs\" class=\"in-toc numbered\">Machine Walkthroughs</h1>\n\n    <div v-for=\"finding in findings\" :key=\"finding.id\">\n        <h2 :id=\"finding.id\" class=\"in-toc numbered\">{{ finding.title }}</h2>\n\n        <div v-if=\"finding.subsections && finding.subsections.length > 0\">\n            <div v-for=\"subsection in finding.subsections\" :key=\"subsection.title\">\n                <h3 class=\"in-toc numbered\">{{ subsection.title }}</h3>\n\n                <table v-if=\"subsection.severity && (subsection.severity.value || subsection.severity) !== 'none'\" class=\"machine-severity\">\n                    <tr>\n                        <th>Severity:</th>\n                        <td :class=\"'machine-severity-' + lodash.toLower(subsection.severity.value || subsection.severity)\">{{ subsection.severity.label || lodash.capitalize(subsection.severity.value || subsection.severity) }}</td>\n                    </tr>\n                </table>\n\n                <markdown :text=\"subsection.content\" />\n            </div>\n        </div>\n\n        <pagebreak />\n    </div>\n</section>\n\n<section class=\"defense\" v-if=\"report.defense_overview || report.defense_fixes.length > 0\">\n    <h1 id=\"defense\" class=\"in-toc numbered\">Defense</h1>\n\n    <div v-if=\"report.defense_overview\">\n        <h2 class=\"in-toc numbered\">Defense Overview</h2>\n        <markdown :text=\"report.defense_overview\" />\n    </div>\n\n    <div v-if=\"report.defense_fixes.length > 0\">\n        <h2 class=\"in-toc numbered\">Fixes Implemented</h2>\n\n        <div v-for=\"fix in report.defense_fixes\" :key=\"fix.title\">\n            <h3 class=\"in-toc numbered\">{{ fix.title }}</h3>\n            <markdown :text=\"fix.content\" />\n        </div>\n    </div>\n    <pagebreak />\n</section>\n\n<section class=\"cleanup\" v-if=\"report.cleanup_overview || report.cleanup_items.length > 0\">\n    <h1 id=\"cleanup\" class=\"in-toc numbered\">Cleanup and Restoration</h1>\n\n    <div v-if=\"report.cleanup_overview\">\n        <h2 class=\"in-toc numbered\">Cleanup Overview</h2>\n        <markdown :text=\"report.cleanup_overview\" />\n    </div>\n\n    <div v-if=\"report.cleanup_items.length > 0\">\n        <h2 class=\"in-toc numbered\">Cleanup Actions</h2>\n\n        <div v-for=\"item in report.cleanup_items\" :key=\"item.title\">\n            <h3 class=\"in-toc numbered\">{{ item.title }}</h3>\n            <markdown :text=\"item.content\" />\n        </div>\n    </div>\n    <pagebreak />\n</section>\n\n<section class=\"appendix\" v-if=\"report.appendix_sections.length > 0\">\n    <h1 id=\"appendix\" class=\"in-toc numbered\">Appendix</h1>\n    \n    <div v-for=\"appendix_section in report.appendix_sections\" :key=\"appendix_section.title\">\n        <h2 class=\"in-toc numbered\">{{ appendix_section.title }}</h2>\n        <markdown :text=\"appendix_section.content\" />\n    </div>\n</section>",
+  "report_styles": "@import \"/assets/global/base.css\";\n\n\n:root {\n    --color-risk-critical: #FF2600;\n    --color-risk-high: #FF9300;\n    --color-risk-medium: #FFDA00;\n    --color-risk-low: #0096FF;\n    --color-risk-info: #00AE51;\n}\n\n\nhtml {\n    font-family: \"Noto Sans\", sans-serif;\n    font-size: 10pt;\n}\n\n\np {\n    text-align: justify;\n    text-align-last: start;\n}\n\n\na {\n    font-style: italic;\n    text-decoration: none;\n    color: inherit;\n}\n\n\npre code {\n    border: 1px solid black;\n}\n\n\nth {\n    background-color: #ABABAB;\n    font-weight: bold;\n}\n\n\n.risk-critical { color: var(--color-risk-critical) !important; font-weight: bold; }\n.risk-high { color: var(--color-risk-high) !important; font-weight: bold; }\n.risk-medium { color: var(--color-risk-medium) !important; font-weight: bold; }\n.risk-low { color: var(--color-risk-low) !important; font-weight: bold; }\n.risk-info { color: var(--color-risk-info) !important; font-weight: bold; }\n\n.risk-bg-critical { background-color: var(--color-risk-critical) !important; color: white !important; }\n.risk-bg-high { background-color: var(--color-risk-high) !important; }\n.risk-bg-medium { background-color: var(--color-risk-medium) !important; }\n.risk-bg-low { background-color: var(--color-risk-low) !important; }\n.risk-bg-info { background-color: var(--color-risk-info) !important; }\n\n\n.ref-page::before { \n    content: \"\" !important;\n}\n.ref-page .ref-title, .ref-finding-number .ref-title {\n    display: none !important;\n}\n.ref-page::after {\n    content: target-counter(attr(href), page) !important;\n}\n.ref-finding-number::before {\n    content: target-counter(attr(href), finding-number);\n}\n\n.findings-list {\n    counter-reset: finding-number;\n}\n\n.finding-number::before {\n    counter-increment: finding-number;\n    content: counter(finding-number) \". \";\n}\n\n\ntr.table-row-link td {\n    padding: 0;\n}\ntr.table-row-link td a {\n    display: block;\n    padding: 0.2em 0.5em 0.2em 0.5em;\n    color: inherit;\n    text-decoration: none;\n    font-style: inherit;\n}\ntr.table-row-link-recommendation td {\n    padding: 0;\n}\ntr.table-row-link-recommendation td a {\n    display: block;\n    padding: 0.2em 0.5em 0.2em 0.5em;\n    color: inherit;\n    text-decoration: none;\n    font-style: inherit;\n}\ntd.table-key {\n    height: 3em;\n    width: 10em;\n    background-color: #ABABAB;\n}\n\n\n.ref-page::before { \n    content: \"\" !important;\n}\n.ref-page::after {\n  content: target-counter(attr(href), page) !important;\n}\n.ref-page .ref-title {\n  display: none !important;\n}\n\n\n.finding-header th {\n    font-weight: normal;\n    width: 7em;\n}\n.finding-header tr {\n    break-inside: auto;\n}\n\n\n.finding-systems {\n    padding-left: 1em;\n}\n.finding-systems-cols {\n    column-count: 2;\n    padding-top: 1em;\n    margin-bottom: 1em;\n}\n\n@page:first{\n    background-color: black;\n}\n\n@page {\n  @footnote {\n    border-top: 1px solid black;\n  }\n}\nfootnote {\n  font-size: 8pt;\n}\n\n\n#watermark {\n    position: fixed;\n    top: 8cm;\n    left: 2cm;\n    transform: rotate(-45deg);\n    font-size: 100pt;\n    opacity: 0.2;\n}\n\n\n#lof li {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n}\n#lof .ref-figure::before {\n    content: var(--prefix-figure) target-counter(attr(href), figure-counter) \" - \";\n}\n#lof .ref-figure > .ref-title {\n    display: inline;\n}\n#lof .ref-figure::after {\n    content: \" \" leader(\".\") \" \" target-counter(attr(href), page);\n}\n\n\n \n#toc li {\n    list-style: none;\n    margin: 0;\n    padding: 0;\n}\n#toc .ref::after {\n    content: \" \" leader(\".\") \" \" target-counter(attr(href), page);\n}\n#toc .toc-level1 {\n    font-size: 1.5rem;\n    font-weight: bold;\n    margin-top: 0.8rem;\n}\n#toc .toc-level2 {\n    font-size: 1.2rem;\n    margin-top: 0.5rem;\n    margin-left: 2rem;\n}\n#toc .toc-level3 {\n    font-size: 1rem;\n    margin-top: 0.4rem;\n    margin-left: 4rem;\n}\n#toc .toc-level4 {\n    font-size: 1rem;\n    margin-top: 0.3rem;\n    margin-left: 6rem;\n}\n\n\n#footer-left {\n    position: running(footer-left);\n}\n#footer-center {\n    position: running(footer-center);\n}\n@page {\n    @bottom-left { \n        content: element(footer-left); \n    } \n    @bottom-center {\n        content: element(footer-center);\n    }\n    @bottom-right-corner {\n        content: counter(page);\n        font-size: 9pt;\n    }\n}\n\n\n@page {\n    margin: 35mm 20mm 25mm 20mm;\n\n    @top-right {\n        content: element(header-right);\n        margin-bottom: 5mm;\n        width: 170mm;\n        text-align: right;\n    }\n}\n#header-right {\n    position: running(header-right);\n    width: 170mm;\n    text-align: right;\n}\n#header-right img {\n    width: 42mm;\n    height: auto;\n}\n\n\n#page-cover  {\n    background-color: black;\n    color: black; \n}\n#page-cover .page-cover-title {\n    position: absolute;\n    top: 120mm;\n    left: 0;\n    width: 14cm;\n    color: white;\n}\n#page-cover .page-cover-title h1 {\n    font-size: 32pt;\n    color: white;\n}\n#page-cover .page-cover-title h2 {\n    font-size: 24pt;\n    color: white;\n}\n#page-cover .page-cover-recipient {\n    position: absolute;\n    top: 19cm;\n    left: 0;\n    width: 14cm;\n    color: white;\n}\n#page-cover .page-cover-address {\n    font-size: 14pt;\n    color: white;\n}\n#page-cover .page-cover-meta {\n    line-height: 10em;\n    color: white;\n    top: 22cm;\n}\n#page-cover .page-cover-imprint {\n    position: absolute;\n    top: 12cm;\n    right: -10mm;\n    width: 40mm;\n    font-size: 8pt;\n    color: white;\n}\n#page-cover .page-cover-imprint2 {\n    position: absolute;\n    top: 20cm;\n    right: auto;\n    font-size: 12pt;\n    line-height: 1.35;\n    color: white;\n}\n#page-cover .page-cover-imprint2 p {\n    margin: 0 0 0.35rem 0;\n}\n@page:first {\n    \n    @bottom-center { content: none !important; }\n    @bottom-right-corner { content: none !important; }\n}\n\n\n.machine-severity {\n    width: 100%;\n    margin: 0 0 1.2rem 0;\n    border-collapse: collapse;\n}\n.machine-severity th {\n    width: 22%;\n    background-color: #5b372f;\n    color: white;\n    font-weight: bold;\n    text-align: center;\n    border: 1px solid #222;\n    padding: 0.8rem;\n}\n.machine-severity td {\n    width: 78%;\n    text-align: center;\n    font-weight: bold;\n    border: 1px solid #222;\n    padding: 0.8rem;\n}\n.machine-severity-critical { background-color: #ff2600; color: white; }\n.machine-severity-high { background-color: #ff9300; color: black; }\n.machine-severity-medium { background-color: #ffda00; color: black; }\n.machine-severity-low { background-color: #0096ff; color: white; }\n.machine-severity-info { background-color: #00ae51; color: white; }",
+  "report_preview_data": {
+    "report": {
+      "title": "Certified Red Team Master",
+      "name_surname": "TODO",
+      "email": "TODO",
+      "report_date": "2026-08-09",
+      "report_version": "1.0",
+      "executive_summary": "The Certified Red Team Master exam report documents the work performed during the assessment of the internal GCB network. The report describes the attack, defense, and cleanup activities in sufficient detail for the reviewer to understand the approach taken, the evidence collected, the decisions made during the assessment, and the final state of the environment. It includes the targeted systems, the techniques used to obtain command execution, the defensive fixes applied after compromise, and the cleanup actions performed because the exam environment does not provide an automatic revert mechanism.",
+      "objective": "The Global Central Bank assessment was scheduled for 07 August 2026 at 03:00 PM. The assessment was performed within a 48-hour access window and included five in-scope servers distributed across two Active Directory forests. The servers had different configurations, trust relationships, applications, and access requirements that had to be considered during both the attack and defense phases.\n\n| Area | Requirement |\n|:---|:---|\n| Lab duration | 48 hours |\n| Environment | 5 in-scope servers across 2 forests with different configurations and applications |\n| Out of scope | The `TEST` machine is a rescue machine and is out of scope |\n| Revert | There is no automatic revert, so all changes must be handled carefully |\n| Attack objective | Obtain OS command execution on all in-scope boxes, not necessarily with administrative privileges |\n| Defense objective | Fix the compromised environment while keeping the required access paths working |\n\nProvided access:\n\n| Username | Machine Name | IP Address |\n|:---|:---|:---|\n| USERNAME | EXAM | 192.168.1.1 |\n\nTarget Systems:\n\n| System | Domain | IP Address |\n| :--- | :--- | :--- |\n| MACHINE1 | DOMAIN.LOCAL | 192.168.1.2 |\n| MACHINE2 | DOMAIN.LOCAL | 192.168.1.3 |\n| MACHINE3 | DOMAIN.LOCAL | 192.168.1.4 |\n| MACHINE4 | DOMAIN.LOCAL | 192.168.1.5 |\n| MACHINE5 | DOMAIN.LOCAL | 192.168.1.6 |\n\nPost-remediation validation criteria:\n\n| Validation Item | Expected Result |\n|:---|:---|\n| Validation item 1 | Required access remains functional |\n| Validation item 2 | Required access remains functional |\n| Validation item 3 | Only the required limited privileges remain available |\n\nThe report contains a detailed walkthrough for each compromised server, including screenshots, tools used, relevant tool output, and an explanation of each important command or action performed during the assessment.",
+      "requirements": "The Global Central Bank assessment required OS command execution on all in-scope servers, while administrative privileges were not mandatory unless needed to reach the objective. After the compromise phase, the environment had to be remediated without breaking the required access paths between trusted systems and accounts.\n\nThe report must include a high-level summary, methodology walkthrough, detailed server-specific walkthroughs, supporting screenshots, tools used, relevant command output, defense actions, cleanup actions, and verification of the final environment state. Firewall rules and route changes were not considered valid primary remediation methods.",
+      "attack_summary": "TODO",
+      "defense_summary": "TODO",
+      "residual_recommendations": "TODO",
+      "information_gathering": "The information gathering and enumeration phase focused on defining the assessment scope and understanding the structure of the Global Central Bank environment. This included identifying the in-scope servers, mapped forests and domains, exposed services, accessible shares, users, groups, trust relationships, delegated permissions, and other potential access paths.\n\nThe collected information was used to determine how the five in-scope servers were connected, which accounts and services could be used during the attack phase, and which access paths had to remain functional after remediation. This phase also provided the basis for planning the defense and cleanup activities, since each identified misconfiguration or access path had to be reviewed for both exploitation impact and remediation requirements.",
+      "attack_methodology": "The Attack Phase focused on validating identified misconfigurations and obtaining OS command execution on all five in-scope servers. This section provides a high-level summary of the attack approach, while the detailed host-by-host steps are documented in the Machine Walkthroughs section.\n\nDuring this phase, the collected enumeration data was used to identify viable access paths, test delegated permissions, abuse misconfigured services or trust relationships where applicable, and confirm command execution on each target system. The section should reference the tools used, important outputs, and the purpose of each major command or action performed during the assessment.",
+      "defense_methodology": "The Defense Phase focused on remediating the compromised environment while preserving the required access paths. This section describes each defensive change, why the selected control was applied, and how it reduced the risk of privilege escalation, lateral movement, or unauthorized access.\n\nAfter each remediation action, the required access paths were validated to confirm that legitimate functionality remained available. Firewall and route changes were not used as the primary remediation method, because the fixes were focused on correcting the underlying permissions, configurations, and access controls that enabled compromise.",
+      "house_cleaning_methodology": "The house cleaning phase focused on reviewing and removing assessment artifacts from the environment after the attack and defense activities were completed. This included checking created files, temporary tools, accounts, permissions, services, scheduled tasks, active sessions, Kerberos tickets, and configuration changes introduced during the assessment.\n\nEach artifact or change was either removed, reverted to its original state, or documented with justification when it had to remain in place. Final validation was performed to confirm that the required access paths still worked, the remediation actions remained effective, and no unnecessary assessment artifacts were left behind.",
+      "defense_overview": "TODO\nSummarize the defensive part.",
+      "cleanup_overview": "TODO\nSummarize all cleanup performed after the assessment.",
+      "appendix_sections": [],
+      "defense_fixes": [
+        {
+          "title": "Fix Title - TODO",
+          "content": "TODO"
+        }
+      ],
+      "cleanup_items": [
+        {
+          "title": "Cleanup Title - TODO",
+          "content": "TODO"
+        }
+      ]
+    },
+    "findings": []
+  },
+  "assets": [
+    {
+      "id": "bd7f4084-dbe6-4a78-b527-dd8b23817c92",
+      "created": "2024-07-15T11:05:13.687647Z",
+      "updated": "2026-08-09T19:17:41.969968Z",
+      "name": "cover.png"
+    },
+    {
+      "id": "7eaf2f32-c37a-4cff-a516-6bf29f3362b6",
+      "created": "2024-07-13T12:24:35.486675Z",
+      "updated": "2026-08-09T19:17:41.969979Z",
+      "name": "logo.png"
+    }
+  ],
+  "format": "projecttypes/v2",
+  "source": null
+}
